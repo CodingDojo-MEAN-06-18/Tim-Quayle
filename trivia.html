@@ -1,0 +1,164 @@
+<html>
+    <head>
+       <title>Assignment 4 - Trivia</title>
+   
+   <body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>
+var score=0
+$(document).ready(function(){
+   
+       $.get("https://opentdb.com/api.php?amount=1&category=21&difficulty=hard&type=multiple", function(data) {
+                          //     function displayName1(data) {
+                                                          // console.log(data.login);
+                                                         //lname = data.login
+                                                         console.log(data)
+                                                       var ans = []
+                                                        $('.sports .question').append('<h4>' + data.results[0].question + '</h4>');
+                                                        for (answer of data.results[0].incorrect_answers) {
+                                                         ans_obj = {answer:answer, rw:"wrong"};
+                                                          ans.push(answer)
+                                                          $('.sports .answers').append('<p> <input type="radio"  id=' + answer +  ' name="sportsn" value="wrong">' + answer + '</p>');
+                                                                                                          }
+
+                                                          $('.sports .answers').append('<p> <input type="radio"  value="right" name="sportsn">' + data.results[0].correct_answer + '</p>');
+                                                          ans.push(data.results[0].correct_answer)
+                                                          ans.sort();
+                                                         console.log("ANSWER LENGth " + ans.length)
+                                                         console.log("incorrect:" + data.results[0].incorrect_answers)       
+                                                         
+                                 
+                                                 })
+       $.get("https://opentdb.com/api.php?amount=1&category=11&type=multiple", function(data) {
+                              
+                                                          // console.log(data.login);
+                                                         //lname = data.login
+                                                         console.log(data)
+                                                         $('.entertainment .question').append('<h4>' + data.results[0].question + '</h4>');
+                                                        for (answer of data.results[0].incorrect_answers) {
+                                                          $('.entertainment .answers').append('<p> <input type="radio" value="wrong" id=' + answer +  ' name="entertainment">' + answer + '</p>');
+                                                                                                          }
+
+                                                          $('.entertainment .answers').append('<p> <input type="radio" value="right" name="entertainment">' + data.results[0].correct_answer + '</p>');
+                                                        
+                                                         console.log("correct:" + data.results[0].correct_answer)
+                                                         console.log("incorrect:" + data.results[0].incorrect_answers)       
+                                                         
+                                                                                                })
+
+       $.get("https://opentdb.com/api.php?amount=1&category=18&type=multiple", function(data) {
+                              
+                                                          // console.log(data.login);
+                                                         //lname = data.login
+                                                         console.log(data)
+                                                         $('.science .question').append('<h4>' + data.results[0].question + '</h4>');
+                                                        for (answer of data.results[0].incorrect_answers) {
+                                                          $('.science .answers').append('<p> <input value="wrong" type="radio" id=' + answer +  ' name="science">' + answer + '</p>');
+                                                                                                          }
+
+                                                          $('.science .answers').append('<p> <input type="radio" value="right" name="science">' + data.results[0].correct_answer + '</p>');
+                                                        
+                                                         console.log("correct:" + data.results[0].correct_answer)
+                                                         console.log("incorrect:" + data.results[0].incorrect_answers)       
+                                                         
+                                                                                                })
+
+
+      $(document).on("click", "input",function(){ 
+       //$(this).prop('disabled', true);
+       
+
+
+
+
+       if(this.value=='right'){
+              alert("You are correct!")
+              score=score+100
+               document.getElementById("score").innerHTML = score || 0;
+                  }
+       else{
+      
+              alert("You are Incorrect!")
+       }                                        
+            $(this).parent().parent().parent().css({"background-color": "grey"});
+
+ 
+        $(".heading #score").html(score);
+       //disables radio button once its been used.
+        var radio=document.getElementsByName(this.name);
+        var len=radio.length;
+        console.log("RL " + len)
+        for(var i=0;i<len;i++)
+        {
+       radio[i].disabled=true;
+       }
+
+           })
+
+
+        });
+       
+</script>
+</head>
+   <style> 
+ .heading *{
+  display:inline;
+ }
+ .heading h1{
+  margin-left:150px;
+  margin-right:150px;
+ }
+ .science{
+  display:inline-block;
+  width:300px;
+background-color:cyan;
+vertical-align:top;
+ border-radius:25px;
+border: 2px solid #0;
+ }
+ .sports{
+  display:inline-block;
+  width:300px;
+background-color:cyan;
+border-radius:25px;
+border: 2px solid #0;
+
+ }
+.sports .answers {
+  display:block;
+}
+.entertainment{
+  display:inline-block;
+  width:300px;
+  vertical-align:top;
+  background-color:cyan;
+  border-radius:25px;
+  border: 2px solid #0;
+ }
+.sports h3, .entertainment h3, .science h3 {
+  margin-left:100px;
+}
+ </style>
+   <div class=heading>
+    <A HREF="javascript:history.go(0)">Continue with new questions</A>
+    <h1> Trivia Night</h1>
+    Score:
+    <div id="score"></div>
+  </div>
+   <div class="sports"> 
+      <h3> Sports </h3>
+   <div class="question"></div>
+   <div class="answers"></div>
+ </div> 
+ <div class="entertainment"> 
+     <h3> Entertainment </h3>
+   <div class="question"></div>
+   <div class="answers"></div>
+ </div> 
+ <div class="science"> 
+     <h3> Science </h3>
+   <div class="question"></div>
+   <div class="answers"></div>
+ </div> 
+   </body>
+   </html>
