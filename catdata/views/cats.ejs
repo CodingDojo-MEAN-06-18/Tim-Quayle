@@ -1,0 +1,42 @@
+<html>
+    <head>
+       <title>Cat Pics</title>
+ 
+ <link rel="stylesheet" type="text/css" href="stylesheets/cat.css">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+ <script>
+$(document).ready(function() {
+
+              $(document).on('click', '#img1', function(event) {
+                
+                $(location).attr('href', '/cats/junior')
+               })   
+
+
+              $(document).on('click', '#img2', function(event) {
+                
+                $(location).attr('href', '/cats/maggie')
+               })   
+              $(document).on('click', '#img3', function(event) {
+                
+                $(location).attr('href', '/cats/mouse')
+               })   
+             $(document).on('click', '#img4', function(event) {
+                
+                $(location).attr('href', '/cats/spike')
+               })   
+            })
+</script>
+</script>
+  </head>
+
+  <body>
+  <div class="wrapper">
+  <h1> EJS CATS </h1>
+  <div id="img1"><img src="images/cat_image_1.jpg" alt="image of cat"></div>
+  <div id="img2"><img src="images/cat_image_2.jpg" alt="image of cat"></div>
+  <div id="img3"><img src="images/cat_image_3.jpg" alt="image of cat"></div>
+  <div id="img4"><img src="images/cat_image_4.jpg" alt="image of cat"></div>
+  </div>
+  </body>
+  </html>

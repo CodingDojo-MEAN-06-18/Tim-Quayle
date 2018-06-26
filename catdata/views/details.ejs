@@ -1,0 +1,19 @@
+<html>
+    <head>
+       <title>Cat Pics</title>
+ 
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+  </head>
+
+  <body>
+  <h1> Details for <%= cat['name'] %> </h1>
+  <h2> Favorite Food:  <%= cat['food']%> </h2>
+  <h2> Age:  <%= cat['age'] %> </h2>
+ <h2> Sleeping Spots: </h2>
+  <% for (var y in cat['spots']) { %>
+ <p> <%= cat['spots'][y] %> </p>
+     <% } %>
+  
+  </body>
+  </html>
