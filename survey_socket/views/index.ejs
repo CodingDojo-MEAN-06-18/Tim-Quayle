@@ -1,0 +1,45 @@
+<html>
+    <head>
+       <title>Dojo Survey Index</title>
+  <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+   <script>
+ $(document).ready(function (){
+            
+            var socket = io.connect();
+            
+            $('#survey').submit(function(data) {
+            data.preventDefault();
+        socket.emit("posting_form", {
+                    name: $('#name').val(),
+                    location: $('#location').val(),
+                    language: $('#language').val(),
+                    comment: $('#comments').val()
+                });
+      });
+
+      socket.on('updated_message', function (data){
+          $('#message').html("You emitted the following information to the server: " + JSON.stringify(data.response));
+      });
+      socket.on('random_number', function (data){
+         $('#number').html("Your lucky number emitted by the server is : " + JSON.stringify(data.response));
+      });
+        });
+          </script>
+    </head>
+   
+
+    <body>
+      <div id="message"></div>
+      <div id="number"></div>
+      <form action='/result' method='post' id="survey">
+          <p>Name: <input type='text' name='name' id='name'></p>
+          <p>Dojo Location: <input type='text' name='location' align='right' id='location'></p>
+          <p>Favorite Language: <input type='text' name='language' id='language'></p>
+          <h2>Comment (optional)</h2>
+          <textarea rows="4" cols="50" name="comments" id='comments'></textarea>
+          <p><input type='submit' value='Submit'></p>
+      </form>
+    </body>
+</html>
