@@ -1,0 +1,64 @@
+<html>
+    <head>
+       <title>Real Time Colors</title>
+  <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+   <script>
+ $(document).ready(function (){
+            
+            var socket = io.connect();
+            
+            $('#gbutton').click(function(e) {
+            socket.emit("bpush", {
+            color: "green"
+               });
+                });
+            $('#bbutton').click(function(e) {
+             socket.emit("bpush", {
+             color: "blue"
+                });
+                 });
+            $('#pbutton').click(function(e) {
+            socket.emit("bpush", {
+            color: "pink"
+               });
+                });
+
+      socket.on('bpush_response', function (data){
+          $('.wrapper').css("background-color",data.data.color);
+      });
+        });
+          </script>
+    <style>
+    .wrapper {
+      background-color: 0xfff;
+      height:800px;
+  }
+  input{
+  height: 150px;
+  width:150px;
+  line-height: 90px;
+  text-align: center;
+  
+    }
+    .btns{
+
+      margin-left:600px;
+      padding-top:300px;
+    }
+  </style>
+    </head>
+   
+
+    <body>
+      
+      <div class="wrapper">
+       <div class="btns">
+      <input type="button" value="Green" id="gbutton">
+     <input type="button" value="Blue" id="bbutton">
+     <input type="button" value="Pink" id="pbutton">
+       </div>
+    </div>
+    </body>
+</html>
