@@ -1,0 +1,39 @@
+<html>
+    <head>
+       <title>The Epic Button</title>
+  <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+   <script>
+ $(document).ready(function (){
+            
+            var socket = io.connect();
+            
+            $('#ebutton').click(function(e) {
+        socket.emit("bpush", {
+            push: "foo"
+               });
+                });
+     $('#rbutton').click(function(e) {
+        socket.emit("rpush", {
+            push: "foo"
+               });
+                });
+     
+      socket.on('bpush_response', function (count){
+          $('#count').html(count.count);
+      });
+        });
+          </script>
+    </head>
+   
+
+    <body>
+      <div id="message"></div>
+      <div id="number"></div>
+      <p> You have pressed the button <span id="count"> </span> times </p>
+      <p>Press the button to update the count</p>
+      <input type="button" value="Push the Epic Button!" id="ebutton">
+     <input type="button" value="Reset the count" id="rbutton">
+    </body>
+</html>
