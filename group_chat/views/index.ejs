@@ -1,0 +1,71 @@
+<html>
+    <head>
+       <title>Chat User Login Page</title>
+  <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+   <script>
+ $(document).ready(function (){
+        
+      
+
+      
+        
+        var socket = io.connect();
+        var current_user;
+        var new_user = function() {
+        //prompt user and store name in variable 'name'
+        var name = prompt("Please Enter Your Name:")
+        //emit data back to server
+         socket.emit("new_user_alert", {name: name});
+                              }
+     new_user();
+       //this is our new message, event, send username and message data back to server
+       $('#newmessage').submit(function(data) {
+            
+            data.preventDefault();
+             socket.emit("chat_text_entered", {
+                    user: current_user,
+                    message: $('#ctext').val()
+             
+                 }) 
+       }) 
+  socket.on('populate_messages', function (data){
+      //set current user so we can use it throughout client code
+      current_user = data.current_user;
+      var messages = data.messages;
+      var messageThread = "";
+      //itterate through all messages and contcatonate them to "messageThread"
+      for (var i = 0; i < messages.length; i++){
+        messageThread += "<p>" + messages[i].name + ": " + messages[i].message + "</p>";
+      }
+      //append messageThread contents to our html
+      $("#cboard").append(messageThread);
+    
+
+                                              })       
+                             
+      //this is the server emitted event to show new data on our message board. 
+      socket.on('show_new_text', function (data){
+     // $("cboard").append("<p>" data.ctext "</p>")
+     $("#cboard").append("<p>" + data.user + ": "+ data.new_message + "</p>");
+                                               })
+ 
+
+ })   //document on 
+           </script>
+   
+
+    </head>
+   
+
+    <body>
+     <p>Conversation Board</p>
+     <div id="cboard">
+     </div>
+     <form id="newmessage">
+     <input type="text" placeholder="Enter Your Message Here" name="itext" size="80" id="ctext">
+     <input type="submit" value="Send" name="send">
+     </form>
+    </body>
+</html>
