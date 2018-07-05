@@ -1,0 +1,52 @@
+<html>
+    <head>
+       <title>Dojo MessageBoard</title>
+  
+<style>
+input {
+    display:block;
+}
+.comments {
+    margin-left:20px;
+}
+</style>
+
+    </head>
+   
+   
+
+    <body>
+    
+<!-- based on the structure of your messages, determine how to display them -->
+
+     <h1>The Dojo Messageboard</h1>
+     <% if(messages.registration) { %>
+     <% for (var x of messages.registration) { %>
+      <h3><%= x %></h3>
+     <% } %>
+      <% } %>
+     <hr>
+     <form  method="post" action='/newmessage'>
+     <input type="text" placeholder="Name" name="name" id="name">
+     <textarea name="message"></textarea>
+     <input type="submit" value="Post New Message" name="send">
+     </form>
+     <% msgs.forEach(function(msg) { %>
+     <h2> Name: <%= msg.name %> </h2>
+     <h2> Message: <%= msg.message %> </h2>
+       <% msg.comments.forEach(function(cmnt) { %>
+      <div class="comments">
+       <p> Name: <%= cmnt.name %> </p>
+       <p> Comment: <%= cmnt.comment %> </p>
+       </div>
+       <% }); %>
+     <form  method="post" action='/newcomment/'>
+     <input type="hidden" name="msgid" value=<%= msg._id %>>
+     <input type="text" placeholder="Name" name="name" id="name">
+     <textarea name="comment"></textarea>
+     <input type="submit" value="Post New Comment" name="send">
+     </form>
+     <% }); %>
+
+    </body>
+</html>
