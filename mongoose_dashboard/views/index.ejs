@@ -1,0 +1,57 @@
+<html>
+    <head>
+       <title>Badger Dashboard</title>
+  
+<style>
+ input{
+  display:block;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 400px;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+    </style>
+    </head>
+   
+
+    <body>
+    <% if(messages.registration) { %>
+     <% for (var x of messages.registration) { %>
+      <h3><%= x %></h3>
+     <% } %>
+ <% } %>
+<H1> Badgers: </H1>
+<table border="1">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Actions</th> 
+   </tr>
+</thead>
+<tbody>  
+    <% badgers.forEach(function(badger) { %>
+  <tr>
+    <td>  <a href=/badgers/<%= badger.id %>><%= badger.name %> </a> </td>
+    <td> <a href=/badgers/edit/<%= badger._id %>>Edit</a> <a href=/badgers/destroy/<%= badger._id %>>Delete</a></td>
+  </tr>
+  <% }); %>
+</tbody> 
+</table>
+<a href=/badgers/new>Add New Badger</a>
+
+
+
+    </body>
+</html>
