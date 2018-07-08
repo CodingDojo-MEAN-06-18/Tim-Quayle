@@ -1,0 +1,30 @@
+<html>
+    <head>
+       <title>Quoting Dojo</title>
+  
+<style>
+ input{
+  display:block;
+}
+</style>
+
+    </head>
+   
+
+    <body>
+    
+<!-- based on the structure of your messages, determine how to display them -->
+<% if(messages.registration) { %>
+     <% for (var x of messages.registration) { %>
+      <h3><%= x %></h3>
+     <% } %>
+ <% } %>
+     <h1>Quoting DoJo </h1>
+     <form id="newmessage" method="post" action='/quotes'>
+     <input type="text" placeholder="Name" name="name" id="name">
+     <textarea rows="4" cols="50" name="quote" id="quote" placeholder="quote"></textarea>
+     <input type="submit" value="Submit Quote" name="send">
+     <a href="/quotes">Go Directly to Quotes</a>
+     </form>
+    </body>
+</html>
