@@ -1,0 +1,7 @@
+<H1> US Timezone Display</H1>
+<button (click)="onButtonClick(5)"[ngClass]="{selected: LastButton===5}">PST</button>
+<button (click)="onButtonClick(6)"[ngClass]="{selected: LastButton===6}">MST</button>
+<button (click)="onButtonClick(7)"[ngClass]="{selected: LastButton===7}">CST</button>
+<button (click)="onButtonClick(8)"[ngClass]="{selected: LastButton===8}">EST</button>
+<button (click)="onButtonClick(9)">CLEAR</button>
+<div class="td"[ngClass]="{clear: LastButton===9}" ><p>{{now|date: 'medium' }}</p></div>
