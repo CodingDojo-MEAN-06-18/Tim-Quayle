@@ -1,0 +1,14 @@
+.ac {
+    border: 2px solid black;
+    height:800px;
+    width:1000px;
+}
+app-beta{
+    display:inline-block;
+    vertical-align:top;
+    margin-left:20px;
+}
+app-alpha{
+    display:inline-block;
+    margin-left:20px;
+}
