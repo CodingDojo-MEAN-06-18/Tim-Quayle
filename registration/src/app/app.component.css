@@ -1,0 +1,25 @@
+form  { display: table;      }
+p     { display: table-row;  }
+label { display: table-cell; }
+input { display: table-cell; }
+.fwrapper{
+    width:800px;
+    height:300px;
+    margin: 0px auto;
+    border: 1px solid black;
+    
+}
+.fields{
+    margin-left:100px;
+}
+button{
+    width:800px;
+}
+#radio {
+    width:200px;
+    display:inline-block;
+    margin-left:100px;
+}
+.errormsg{
+    display:inline-block;
+}
