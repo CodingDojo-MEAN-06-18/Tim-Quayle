@@ -1,0 +1,67 @@
+<div class="wrappit">
+<div class="top">
+<section>
+  <fieldset>
+<legend>Power Component</legend>
+ <form (submit)="onSubmit($event,myForm)" #myForm='ngForm' >
+    <label for plevel>Initial Power Level: </label><input type="number" value="100" id="plevel" name="plevel" min="1" max="100" 
+    [(ngModel)]="power" 
+     #plevel="ngModel"
+    > 
+   <button>Calculate Powers</button>
+  </form>
+
+</fieldset>
+</section>
+</div>
+<div class="wrapper">
+<div class="child">
+    <section>
+  <fieldset>
+   <legend>Human</legend>
+    <app-child [myrank]="'human'" [mypower]='subpower'></app-child>
+  </fieldset>
+  </section>
+  </div>
+  <div class="child">
+      <section>
+      <fieldset>
+          <legend>Saiyan</legend>
+        <app-child [myrank]="'saiyan'" [mypower]='subpower'></app-child>
+</fieldset>
+</section>
+</div>
+<div class="child">
+    <section>
+    <fieldset>
+        <legend>SuperSaiyan</legend>
+      <app-child [myrank]="'supersaiyan'" [mypower]='subpower'></app-child>
+</fieldset>
+</section>
+</div>
+<div class="child">
+    <section>
+    <fieldset>
+        <legend>SuperSaiyan2</legend>
+      <app-child [myrank]="'supersaiyan2'" [mypower]='subpower'></app-child>
+</fieldset>
+</section>
+</div>
+<div class="child">
+    <section>
+    <fieldset>
+        <legend>SuperSaiyan3</legend>
+      <app-child [myrank]="'supersaiyan3'" [mypower]='subpower'></app-child>
+</fieldset>
+</section>
+</div>
+<div class="child">
+    <section>
+    <fieldset>
+        <legend>SuperSaiyan4</legend>
+      <app-child [myrank]="'supersaiyan4'" [mypower]='subpower'></app-child>
+</fieldset>
+</section>
+</div>
+</div>
+</div>
