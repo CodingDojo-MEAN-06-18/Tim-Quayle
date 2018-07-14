@@ -8,13 +8,10 @@ import { Component,Input, OnInit,OnChanges } from '@angular/core';
 export class ChildComponent implements OnInit, OnChanges {
   @Input() mypower: number;
   @Input() myrank: string;
-  newpower=(this.mypower)*2;
-//CalcPower(mypower,myrank);
-  //console.log(mypower);
+ 
   constructor() { }
   ngOnInit() {
-    this.newpower= this.mypower*2;
-    console.log("NP",this.newpower);
+    
   }
   
   ngOnChanges() {
