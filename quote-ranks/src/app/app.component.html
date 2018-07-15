@@ -1,0 +1,22 @@
+<h1>Add a Quote</h1>
+<form (submit)="onSubmit($event,myForm)" #myForm='ngForm'>
+<textarea name="quote" id="quote" [(ngModel)]="q.quote" 
+required
+#quote="ngModel"
+minlength=4></textarea><div class="errormsg" *ngIf="!quote.valid  && quote.dirty">Quote is Required & must be at least 4 characters.</div>
+<p><label for="author">Author:</label><input type="text" name="author" id="author"[(ngModel)]="q.author" 
+  required
+  #author="ngModel"
+  minlength=2><div class="errormsg" *ngIf="!author.valid  && author.dirty">Author is Required & must be at least 2 characters.</div></p>
+<button [disabled] = "!myForm.valid">Add Quote</button>
+</form>
+<h1>Quotes List</h1>
+
+<div class='q' *ngFor="let quote of quotes">
+  <div *ngIf="quote.quote"class="qbox">
+  <p> {{quote.quote}} </p>
+ <p>- {{quote.author}} </p>
+<h2>+{{quote.score}}</h2>
+ <app-votecalc [myscore]='quote.score'  [myid]='quote.id' (passUpscore)="scoreData($event)"  ></app-votecalc>
+ </div>
+ </div>
