@@ -1,0 +1,6 @@
+<div class="wrap">
+<h1> {{btype}}</h1>
+<div *ngIf="btype==='Casino'">Earn up to or lose up to 100 gold</div>
+<div *ngIf="btype !='Casino'">Earn {{min}} - {{max}} gold</div>
+<button (click)="onClick()">{{btype}}!</button>
+</div>

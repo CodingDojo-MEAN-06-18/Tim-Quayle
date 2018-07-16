@@ -1,0 +1,8 @@
+<app-scorer [gotgold]='gotgold'></app-scorer>
+<app-building [btype]="'Farm'"[min]=2 [max]=5 (passUpgold)="getGold($event)"></app-building>
+<app-building [btype]="'Cave'"[min]=5 [max]=10 (passUpgold)="getGold($event)"> </app-building>
+<app-building [btype]="'Casino'"[min]=-100 [max]=100 (passUpgold)="getGold($event)"> </app-building>
+<app-building [btype]="'House'"[min]=7 [max]=15 (passUpgold)="getGold($event)"> </app-building>
+<app-messages [source]='source' [gotgold]='gotgold'></app-messages>
+
+

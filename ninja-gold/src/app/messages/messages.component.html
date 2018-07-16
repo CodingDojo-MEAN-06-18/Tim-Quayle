@@ -1,0 +1,7 @@
+
+<div class="msgs" *ngIf="msgarray.length > 0">
+    <ul *ngFor="let msg of msgarray">
+    <li *ngIf="msg.amount > 0 ">You've earned {{msg.amount}} gold at the {{msg.src}}</li>
+    <li *ngIf="msg.amount < 0 ">You've lost {{msg.amount}} gold at the {{msg.src}}</li> 
+</ul>
+</div>
