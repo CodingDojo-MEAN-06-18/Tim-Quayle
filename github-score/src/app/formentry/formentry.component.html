@@ -1,0 +1,15 @@
+<h1>Github Score</h1>
+<form (submit)="onSubmit($event,myForm)" #myForm='ngForm' >
+  <p><label for="username">GitHub Username: </label><input type="text" name="username" id="username"[(ngModel)]="username"
+  required></p>
+<button [disabled] = "!myForm.valid">Calculate my gitHub Score</button>
+</form>
+<div *ngIf="errorflag===true"><h2>Username Not found, please choose a different User</h2></div>
+<div [hidden]= "!myForm.submitted || errorflag===true" class="scorecard">
+  <h1>Your Score: {{score}}</h1>
+ <div class="undertwenty" *ngIf="score < 20"><h2>Needs Work!</h2></div>
+ <div class="underfifty" *ngIf="score >20 && score < 50"><h2>A decent start!</h2></div>
+ <div class="underhundred" *ngIf="score >50 && score < 100"><h2>Doing Good!</h2></div>
+ <div class="undertwohundred" *ngIf="score >100 && score < 200"><h2>Great Job!</h2></div>
+ <div class="overtwohundred" *ngIf="score >= 200"><h2>GitHub Elite!</h2></div>
+</div>
