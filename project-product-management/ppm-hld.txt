@@ -1,0 +1,51 @@
+components:
+home:
+   route: /
+   content: Welcome to the blah blah..
+links: Home (/) ProductList: (/products)  ProductCreation: (/products/new)
+
+
+
+ProductList:
+route: /products
+content:  Listing of all products
+  Behavior for each product:
+    Edit: 
+      Behavior: Routes to edit component
+  
+ Delete: Immediately deletes product
+
+
+EditProduct:
+   route: /products/edit/:id
+content:  Form containing product properties
+   Properties: Title
+                           Price
+                           Image Url
+Behavior:   
+       Deletes product and redirects to /products (ComponentList)
+       Update: Update Products and redirect to /products
+
+
+NewProduct
+  route: /product/new
+content:  Form allowing input of proerties.
+ Properties: Title
+                           Price
+                           Image Url
+Behavior: Create: Add to product list and redirect to /product (ProductList)
+
+
+Data:
+Product Object:
+ Location: ./models/Product.ts
+Product = { 
+id: 0,
+ title: '',
+price: 0,
+imageurl: ''
+};
+ProductListArray:
+Location: data.service
+ProductList: Array<Product> = [];
+

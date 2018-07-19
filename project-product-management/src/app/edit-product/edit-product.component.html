@@ -1,0 +1,16 @@
+<h1>Edit Product</h1>
+  <form (submit)="editProduct($event,myForm)" #myForm='ngForm' >
+    <p><label for="title">Title: </label><input type="text" name="title" id="title" placeholder="{{product?.title}}"
+      [(ngModel)]="newtitle" 
+      required
+      #title="ngModel"><div class="errormsg" *ngIf="!title.valid  && title.dirty">Title is Required & must be at least 4 characters.</div> </p>
+    <p><label for="price">Price: </label><input type="number" name="price" id="price" placeholder="{{product?.price}}"
+      [(ngModel)]="newprice" 
+      required
+      #price="ngModel"> </p>
+    <p><label for="imgurl">ImageUrl: </label><input type="text" name="imgurl" id="imgurl" placeholder="{{product?.imageurl}}"
+       [(ngModel)]="newimageurl" 
+      #imgurl="ngModel" ></p>  
+   <p> <button [disabled]="!myForm.valid">Update</button> </p>
+  </form>
+  <p><button [disabled]="!product" (click)="deleteProduct(product)">Delete</button></p>
