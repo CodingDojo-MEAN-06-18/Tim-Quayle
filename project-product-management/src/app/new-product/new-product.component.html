@@ -1,0 +1,16 @@
+<h1>Create A New Product</h1>
+<form (submit)="CreateProduct($event,myForm)" #myForm='ngForm'>
+ <p> <label for= "title">Title: </label><input name="title" id="title" type="text"
+  [(ngModel)]="p.title" 
+  required
+  minlength=4
+  #title="ngModel"><div class="errormsg" *ngIf="!title.valid  && title.dirty">Title is Required & must be at least 4 characters.</div> </p>
+<p><label for= "price">Price: </label><input name="price" id="price" type="number" 
+   [(ngModel)]="p.price" 
+  required
+  #price="ngModel"></p>
+<p><label for= "imgurl">ImageUrl(Optional): </label><input name="imgurl" id="imgurl" type="text"
+  [(ngModel)]="p.imageurl" 
+  #imgurl="ngModel" ></p>
+<p><button [disabled]="!myForm.valid" >Create</button></p>
+</form>
