@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import {DataService} from '../data.service';
 @Component({
   selector: 'app-notelister',
@@ -6,20 +6,23 @@ import {DataService} from '../data.service';
   styleUrls: ['./notelister.component.css']
 })
 export class NotelisterComponent implements OnInit {
-notes = {};
+  @Input() newnotes; 
+  notes = [];
   constructor(
     private _dataService: DataService
   ) { }
-
+  ngOnChanges(){
+    console.log("Input Changed!")
+    this.notes=this.newnotes;
+  }
   ngOnInit() {
-  this.notes = this._dataService.getNotes()
-  .subscribe(
-    (response) => {
-     console.log(response);
-     //console.log(response.weather[0].description);
-    },
-    (err) => { console.log(err);}
-  ); 
-}
+ console.log("WE ARE HERE!!!!!!!!")
+     this._dataService.getNotes()
+     .subscribe(response =>{
+      this.notes=response.reverse();
+      console.log("THIS IS RESPONSE",response);
+ });
+                         
+                           }
 
 }
