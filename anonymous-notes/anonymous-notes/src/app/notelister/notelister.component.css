@@ -1,0 +1,11 @@
+.note {
+    border: 2px solid black;
+}
+div{
+    margin-bottom:10px;
+}
+.notes{
+    width:600px;
+    height:400px;
+    overflow:scroll;
+}
