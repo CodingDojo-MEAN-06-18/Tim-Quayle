@@ -1,6 +1,8 @@
-<form (submit)="makeNote($event,myForm)" #myForm='ngForm' >
-  <p><label for="note">Title: </label><input type="note" name="note" id="note"
-    [ngModel]="note" 
+<div class="errormsg" *ngIf="!note.valid  && myForm.submitted">Note is Required & must be at least 3 characters.</div>
+<form (submit)="makeNote($event,myForm)" #myForm='ngForm'>
+  <p><label for="onote">Title: </label><input  name="note" id="onote" type="text"
+    [ngModel]="onote" 
     required
+    minlength=3
     #note="ngModel">
-    <button [disabled]="!myForm.valid">Update</button>
+    <button>Update</button>
