@@ -5,14 +5,22 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataService {
 
-  constructor(private _http: HttpClient) { }
-makeNote(note: string){
- console.log("inservice:", note)
-  this._http.post('http://localhost:8000/notesadd/',note);
-}
+  constructor(private _http: HttpClient) { this.getNotes();}
+  makeNote(note){
+    console.log("IN POST DATA SERVICE")
+    this._http.post('/notesadd', note).subscribe(
+      (data) =>{
+        console.log("success!");
+             },
+      (err) => { console.log(err);}
+    )}
+  
+
+
+
 
 getNotes() :any{
   console.log("GETNOTES!")
-  return this._http.get('http://localhost:8000/notesget/');
-}
+  return this._http.get('/notesget');
+               }
 }
