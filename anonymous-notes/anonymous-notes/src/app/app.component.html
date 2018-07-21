@@ -1,2 +1,2 @@
-<app-notemaker></app-notemaker>
-<app-notelister></app-notelister>
+<app-notemaker (passUpnotes)='newNotes($event)' ></app-notemaker>
+<app-notelister [newnotes] = 'newnotes'></app-notelister>
