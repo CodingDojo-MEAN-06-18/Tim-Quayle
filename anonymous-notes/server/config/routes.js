@@ -1,14 +1,16 @@
 const notes = require('../controllers/notes.js')
 const path = require('path');
 module.exports = function(app) {
+
   app.post('/notesadd', (req, res, next) =>{
-    console.log('in KJHKJLKJLKJLHKJLHKJLKH');
-    //quotes.show(req, res);
+    
+    console.log('we are posting data');
+    notes.notesadd(req, res);
   })
 
   app.get('/notesget', (req, res, next) =>{
     console.log('in notesget');
-    notes.notesget();
+    notes.notesget(req, res);
     //quotes.show(req, res);
   })
   app.all("*", (req,res,next) => {    
