@@ -1,0 +1,6 @@
+<form (submit)="makeNote($event,myForm)" #myForm='ngForm' >
+  <p><label for="note">Title: </label><input type="note" name="note" id="note"
+    [ngModel]="note" 
+    required
+    #note="ngModel">
+    <button [disabled]="!myForm.valid">Update</button>

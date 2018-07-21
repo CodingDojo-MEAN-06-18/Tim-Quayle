@@ -1,0 +1,30 @@
+<html>
+    <head>
+       <title>Badger Dashboard</title>
+  
+<style>
+ input{
+  display:block;
+}
+</style>
+
+    </head>
+   
+
+    <body>
+    
+<!-- based on the structure of your messages, determine how to display them -->
+<% if(messages.registration) { %>
+     <% for (var x of messages.registration) { %>
+      <h3><%= x %></h3>
+     <% } %>
+ <% } %>
+     <h1>Badger Creation Page</h1>
+     <form id="newbadger" method="post" action='/badgers'>
+     <input type="text" placeholder="Name" name="name" id="name">
+     <input type="Number" placeholder="age" name="age" id="age">
+     <input type="text" placeholder="Favorite Food" name="ffood" id="ffood">
+     <input type="submit" value="Create New Badger" name="send">
+     </form>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+    <head>
+       <title>Badger Dashboard</title>
+  
+<style>
+ input{
+  display:block;
+}
+</style>
+
+    </head>
+   
+
+    <body>
+    
+<!-- based on the structure of your messages, determine how to display them -->
+<% if(messages.registration) { %>
+     <% for (var x of messages.registration) { %>
+      <h3><%= x %></h3>
+     <% } %>
+ <% } %>
+     <h1>Badger Info </h1>
+     <% badgers.forEach(function(badger) { %>
+       <h2> Name: <%= badger.name %>  </h2>
+       <p>  Age: <%= badger.age %> </p>
+       <p> Favorite Food: <%= badger.ffood %> </P>
+       <a href='/'>Back</a>
+    <% }); %>
+    </body>
+</html>
