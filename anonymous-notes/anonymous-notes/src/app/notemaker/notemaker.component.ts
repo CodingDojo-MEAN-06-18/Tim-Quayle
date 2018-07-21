@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter} from '@angular/core';
 import {DataService} from '../data.service';
 import {NgForm} from '@angular/forms';
 //import {Router} from "@angular/router";
@@ -8,8 +8,9 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./notemaker.component.css']
 })
 export class NotemakerComponent implements OnInit {
-
-  constructor(
+notes = [];
+@Output() passUpnotes = new EventEmitter(); 
+constructor(
     private _dataService: DataService
   ) 
     { }
@@ -17,7 +18,22 @@ export class NotemakerComponent implements OnInit {
   ngOnInit() {
   }
 makeNote(event: Event, Form: NgForm){
-  console.log(Form.value);
- this._dataService.makeNote(Form.value);
-}
-}
+  event.preventDefault();
+  if(!Form.valid){
+    Form.reset();
+    
+  }
+  else{
+        this._dataService.makeNote(Form.value);
+        //Form.reset();
+        this._dataService.getNotes()
+        .subscribe(response =>{
+         this.notes=response.reverse();;
+         this.passUpnotes.emit(this.notes);
+        })
+      
+      
+        
+       }
+                                      }
+                                                    }
