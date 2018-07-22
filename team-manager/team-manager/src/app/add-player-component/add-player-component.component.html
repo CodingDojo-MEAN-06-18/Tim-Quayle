@@ -1,0 +1,10 @@
+<p><a [routerLink]="['/players/list']">List</a>   <a [routerLink]="['/players/addplayer']">Add A Player</a> </p>
+<form (submit)="onSubmit($event,myForm)" #myForm='ngForm'>
+  <p><label for=name>Player Name: </label><input  name="name" id="name" type="text" [(ngModel)]="player.name" required minlength=2  #name="ngModel"></p>
+    <div class="errormsg" *ngIf="!myForm.valid  && myForm.dirty">*Name must be set to at least 2 characters in length.</div>
+    <p><label for=positionid>Preferred Position: </label><input  name="position" id="positionid" type="text"
+      [(ngModel)]="player.position" 
+      
+      #positionid="ngModel"></p>
+    <p><button [disabled]="!myForm.valid">Add</button></p>
+    </form>
