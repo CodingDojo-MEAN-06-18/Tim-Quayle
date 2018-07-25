@@ -1,0 +1,12 @@
+<h1>Rankings</h1>
+<div class="leaders">
+<div *ngFor="let player of players;let i = index" [attr.data-index]="i">
+<div class="profile">
+<div class="rank"> <h1>{{i+1}}</h1> </div>
+  
+<img src="{{player.pic}}">
+<div class="score"> <h2>  Score:{{player.score}}</h2> </div>
+  <h3> {{player.name}} </h3>  
+</div>
+</div>
+</div>

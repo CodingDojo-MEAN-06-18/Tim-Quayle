@@ -1,0 +1,20 @@
+.playsect{
+    height:200px;
+    width:350px;
+    display:inline-block;
+    vertical-align:top;
+}
+img{
+    height:100px;
+    width:100px;
+}
+.batbut{
+    display:block;
+}
+.batbut button{
+   background-color:orange;
+    width:500px;
+}
+.err{
+    color:red;
+}

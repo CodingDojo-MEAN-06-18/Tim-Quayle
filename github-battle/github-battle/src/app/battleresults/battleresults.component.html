@@ -1,0 +1,10 @@
+<div class='first'>
+  <h1>1st Place</h1>
+<h2>{{players['winner'].name}} (Score: {{players['winner'].score}})</h2>
+</div>
+<img src='{{userpic}}'>
+<div class='second'>
+<h1>2nd Place</h1>
+<h2>{{players['loser'].name}} (Score: {{players['loser'].score}})</h2>
+</div>
+<a [routerLink]="['']">Reset</a>

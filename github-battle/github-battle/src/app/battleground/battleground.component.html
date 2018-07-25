@@ -1,0 +1,45 @@
+
+ <div class="playsect">
+<div *ngIf="!sub1 || errorflag2">
+<h1> Player 1</h1>
+<form (submit)="onSubmit1($event,myForm1)" #myForm1='ngForm'>
+ <div class="err" *ngIf="xx && errorflag2"> GitHub user name not found, please choose another</div>
+  <p><label for="uname1">GitHub Username: </label><input  name="username1" id="uname1" type="text"
+    [ngModel]="uname1" 
+    required
+    #username1="ngModel"></p>
+   
+    <button [disabled]="!myForm1.valid" >Get User</button>
+  </form>
+ </div>
+  
+ <div *ngIf="sub1 && !errorflag2">
+    <img src={{user1pic}}>
+    <p>{{user1login}}</p>
+    
+    </div>
+</div>
+  
+
+
+<div class="playsect">
+    <div *ngIf="!sub2|| errorflag">
+    <h1> Player 2</h1>
+    <form (submit)="onSubmit2($event,myForm2)" #myForm2='ngForm'>
+      <div class="err" *ngIf="x && errorflag"> GitHub user name not found, please choose another</div>
+      <p><label for="uname2">GitHub Username: </label><input  name="username2" id="uname2" type="text"
+        [ngModel]="uname2" 
+        required
+        #username2="ngModel"></p>
+        <button [disabled]="!myForm2.valid" >Get User</button>
+      </form>
+      </div>
+      <div *ngIf="sub2 && !errorflag">
+          <img src={{user2pic}}>
+          <p>{{user2login}}</p>
+       
+        </div>
+      </div>
+    <div class='batbut'>
+      <button (click)="battleMe()" [hidden]="!sub1 || !sub2 || errorflag || errorflag2">Battle!</button>
+      </div>
