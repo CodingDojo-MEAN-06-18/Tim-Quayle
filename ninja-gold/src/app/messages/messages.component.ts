@@ -6,30 +6,30 @@ import { DataService } from '../data.service';
   templateUrl: './messages.component.html',
   styleUrls: ['./messages.component.css']
 })
-export class MessagesComponent implements OnInit, OnChanges  {
-  @Input() source: string;
-  @Input() gotgold: number;
-  
+export class MessagesComponent implements OnInit  {
+ 
   msgarray= [];
   msgobj = {
     src: '',
     amount: 0
   };
-
+bstring = '';
+mpstring = '';
   constructor(private _dataService: DataService) { }
-
+  gobj = {};
   ngOnInit() {
-  this.msgarray = [];
+    let foo= this._dataService.eventChanged
+    .subscribe(
+      (gobj) => {
+        this.gobj = gobj;
+       console.log("jdjdjjdd",this.gobj);
+       this.msgobj = {
+        src: gobj.bstring,
+        amount: gobj.gcnt
+                     }      
+        this.msgarray.push(this.msgobj);
+                   }
+    )
   }
-  ngOnChanges(changes: SimpleChanges) {
-    console.log("WERE HERE")
-    console.log("MSG source:",this.source)
-   this.msgobj = {
-     src: this.source,
-     amount: this.gotgold
 
-   }
-   this.msgarray.push(this.msgobj);
-   console.log("MSGlength:  ",this.msgarray.length)
-  }
 }
