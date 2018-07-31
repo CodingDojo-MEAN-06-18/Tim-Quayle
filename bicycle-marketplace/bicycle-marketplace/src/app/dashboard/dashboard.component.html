@@ -1,0 +1,26 @@
+
+<h1 *ngIf="authfailure">ACCESS DENIED!</h1>
+<div *ngIf="!authfailure">
+<p><a [routerLink]="['/browse']">Browse</a>   <a [routerLink]="['/listings']">My Listings</a> <a href (click)="logOff($event)">Log Off</a>  </p>
+<form #searchForm='ngForm' (submit)="onSearch($event,searchForm)"  >
+<label for="searchbox">Search </label> <input type="text" name="sbox" id="searchbox"
+[ngModel]="searchbox" 
+required
+#sbox="ngModel"> 
+<button>Search</button>
+</form>
+<div *ngIf="negsearch">No Bikes Found with search criteria</div>
+<div class="listbikes" *ngFor="let bike of bikes">
+<div class="bikeEntry">
+<div class="pic"><img src="{{bike.bikepic}}"> </div>
+ <div class="titdesc"><h2>{{bike.title}} </h2>
+   {{bike.description}} </div>
+<div class="priceloc"><h2>{{bike.price| currency}} </h2>
+ <p>{{bike.location}} </p>
+  <button *ngIf="sessionid !== bike.userid" (click)="getContact(bike.userid)">Contact</button>
+ <button *ngIf="sessionid === bike.userid" (click)="delBike(bike)" >Delete</button>
+</div>
+</div>
+</div>
+</div>
+

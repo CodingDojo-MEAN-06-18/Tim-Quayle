@@ -1,0 +1,30 @@
+a{
+    margin-left:10px;
+}
+.bikeEntry{
+    width:500px;
+    height:150px;
+    border: 2px solid black;
+}
+img{
+    height:100px;
+    width:100px;
+}
+.pic{
+    display:inline-block;
+    height:150px;
+    width:110px;
+}
+.titdesc{
+   vertical-align:top;
+    display:inline-block;
+    height:150px;
+    width:250px;
+}
+.priceloc{
+    vertical-align:top;
+     display:inline-block;
+     height:150px;
+     width:110px;
+ }
+

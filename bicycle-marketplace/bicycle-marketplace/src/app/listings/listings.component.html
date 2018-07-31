@@ -1,0 +1,69 @@
+<h1 *ngIf="authfailure">ACCESS DENIED!</h1>
+<div *ngIf="!authfailure">
+<p><a [routerLink]="['/browse']">Browse</a>   <a [routerLink]="['/listings']">My Listings</a> <a href (click)="logOff">Log Off</a>  </p>
+<div class="create">
+    <h1>Create Listing</h1>
+      <form  (submit)="onCreate($event,createForm)"  #createForm='ngForm'>
+       <label for="image">Image Url</label><input type="text" name="bikepic" id="image"
+        [ngModel]="image" 
+        required
+        #bikepic="ngModel"
+        >
+     Title <input type="text" name="title" id="titletext"
+        [ngModel]="titletext" 
+        required
+        #title="ngModel"> 
+        <label for="pricelist"> Price</label><input type="Number" name="price" id="pricelist"
+        [ngModel]="pricelist" 
+       required
+       #price="ngModel">
+         <p>Description</p>
+        <p> <textarea name="description" id="desc"
+       [ngModel]="desc" 
+       required
+       #description="ngModel"></textarea> </p>
+        
+        <label for="location"> Location</label><input type="text" name="location" id="loc"
+        [ngModel]="loc" 
+        required
+        #location="ngModel">
+        <button [disabled]="!createForm.valid">Create</button>
+        </form>
+        </div>
+        <h1>Edit/Update Listing</h1>
+        <div class = "bikelisting" *ngFor="let mybike of mybikes">
+          <div class="bikeEntry">
+    <form (submit)="onUpdate($event,updateForm)"   #updateForm='ngForm'  >
+        <p>Image Url: <input type="text" name="bikepic" id="image" size="50" value="{{mybike.bikepic}}"
+        [ngModel]="mybike.bikepic" 
+        required
+        #bikepic="ngModel"
+        > </p>
+    <p> Title  <input type="text" value="{{mybike.title}}" name="title" id="titletext"
+        [ngModel]="mybike.title" 
+        required
+        #title="ngModel"> </p>
+       <p> Price  <input type="number" min="1" value="{{mybike.price}}" name="price" id="price"
+        [ngModel]="mybike.price" 
+        required
+        #price="ngModel"></p>
+        <p>Description: <textarea placeholder="{{mybike.description}}" name="description" id="desc"
+        [ngModel]="mybike.description" 
+        required
+        maxlength=200
+        #description="ngModel"></textarea></p>
+
+
+        <label for="location">Location:  </label> <input type="text" value="{{mybike.location}}" name="location" id="location"
+        [ngModel]="mybike.location" 
+        required
+        #location="ngModel">
+        <input type="hidden" value="mybike._id" name="_id" id="_id" [ngModel]="mybike._id" #_id="ngModel">
+        <button>Update</button> 
+       </form>
+       <button (click)="delBike(mybike)">Delete</button> 
+        </div>
+
+
+        </div>
+        </div>

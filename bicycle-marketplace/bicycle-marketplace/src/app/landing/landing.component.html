@@ -1,0 +1,53 @@
+<h2>Bike of the Day!</h2>
+
+<div class="botd">
+    <div class="pic"><img src="{{bike.bikepic}}"> </div>
+     <div class="titdesc"><h2>{{bike.title}} </h2>
+       {{bike.description}} </div>
+    <div class="priceloc"><h2>{{bike.price| currency}} </h2>
+       {{bike.location}} 
+      </div>
+   
+  </div>
+  <div class="login">
+<form (submit)="onLogin($event,logForm)"  #logForm='ngForm'  >
+    <label for="emailidl"> Email</label><input type="text" name="email" id="emailidl"
+             [ngModel]="emailidl" 
+            required
+            #email="ngModel">
+            <label for="passwdl"> Password</label><input type="password" name="password" id="passwdl"
+            [ngModel]="passwdl" 
+            required
+            #password="ngModel">
+            <div *ngIf="badlogin" class="errormsg" >Invalid Credentials</div>
+            <div *ngIf="badlogin_5times" class="errormsg" >Max Attempts to login exceeded, username locked out for 1 hour</div>
+            <button>Login</button>
+    </form>
+    </div>
+    <div class="register">
+        <form  (submit)="onReg($event,regForm)"  #regForm='ngForm'>
+            <label for="fname"> First Name</label><input type="text" name="firstname" id="fname"
+            [ngModel]="fname" 
+            required
+            #firstname="ngModel">
+           <label for="lname"> Last Name</label><input type="text" name="lastname" id="lname"
+           [ngModel]="lname" 
+           required
+           #lastname="ngModel">
+            <label for="emailid"> Email</label><input type="text" name="email" id="emailid"
+             [ngModel]="emailid" 
+            required
+            #email="ngModel">
+            <label for="password"> Password</label><input type="password" name="password" id="passwd"
+            [ngModel]="passwd" 
+            required
+            #password="ngModel">
+            <div *ngIf="passShort" class="errormsg" >Password must contain at least 16 characters</div>
+            <label for="cpassword">Confirmation Password</label><input type="password" name="cpassword" id="cpasswd"
+            [ngModel]="cpasswd" 
+            required
+            #cpassword="ngModel">
+            <div *ngIf="passmm" class="errormsg" >Password must match conformation password</div>
+            <button [disabled]="!regForm.valid">Register</button>
+            </form>
+            </div>
